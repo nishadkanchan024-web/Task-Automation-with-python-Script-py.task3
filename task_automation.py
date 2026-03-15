@@ -1,8 +1,13 @@
+
 import os
 import shutil
 import re
 import requests
+import urllib3
 from bs4 import BeautifulSoup
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 print("Python Task Automation")
 print("1. Move JPG Files")
@@ -43,7 +48,7 @@ elif choice == "2":
 elif choice == "3":
     url = "https://example.com"
 
-    response = requests.get(url)
+    response = requests.get(url, verify=False)
     soup = BeautifulSoup(response.text, "html.parser")
 
     title = soup.title.string
